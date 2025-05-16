@@ -620,23 +620,27 @@ section.visible {
         font-size: 0.85rem;
     }
 }
+
 @media (max-width: 320px) {
     .hero-content {
         padding: 0 0.3rem;
+        width: 100%;
     }
 
     .hero-content h1 {
-         position: relative;
-         width: fit-content;
-         margin: 0 auto;
+        position: relative;
+        width: fit-content;
+        margin: 0 auto 0.4rem;
         font-size: 0.8rem;
         letter-spacing: -0.1px;
-        margin-bottom: 0.4rem;
+        text-align: center;
+        white-space: normal;
     }
 
     .hero-content p {
         font-size: 0.8rem;
         margin-bottom: 1rem;
+        text-align: center;
     }
 
     .cta-button {
