@@ -623,7 +623,40 @@ section.visible {
         font-size: 0.85rem;
     }
 }
+@media (max-width: 393px) {
+    .hero-content {
+        padding: 0 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
+    .hero-content h1 {
+        position: relative;
+        width: 100%;
+        margin: 0 auto 0.6rem;
+        font-size: 1.1rem;
+        letter-spacing: -0.2px;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.4;
+        max-width: 320px;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+        text-align: center;
+        max-width: 280px;
+    }
+
+    .cta-button {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.9rem;
+    }
+}
 @media (max-width: 320px) {
     .hero-content {
         padding: 0 0.3rem;
