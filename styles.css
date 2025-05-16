@@ -582,7 +582,7 @@ section.visible {
     }
 
     .hero-content h1 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         margin-bottom: 0.6rem;
         letter-spacing: -0.3px;
     }
@@ -612,7 +612,7 @@ section.visible {
 
 @media (max-width: 360px) {
     .hero-content h1 {
-        font-size: 1.2rem;
+        font-size: 1.0rem;
         letter-spacing: -0.2px;
     }
 
