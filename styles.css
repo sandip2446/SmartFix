@@ -626,7 +626,10 @@ section.visible {
     }
 
     .hero-content h1 {
-        font-size: 0.9rem;
+         position: relative;
+         width: fit-content;
+         margin: 0 auto;
+        font-size: 0.8rem;
         letter-spacing: -0.1px;
         margin-bottom: 0.4rem;
     }
