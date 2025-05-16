@@ -620,6 +620,27 @@ section.visible {
         font-size: 0.85rem;
     }
 }
+@media (max-width: 320px) {
+    .hero-content {
+        padding: 0 0.3rem;
+    }
+
+    .hero-content h1 {
+        font-size: 0.9rem;
+        letter-spacing: -0.1px;
+        margin-bottom: 0.4rem;
+    }
+
+    .hero-content p {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+}
 
 /* Landscape Mode Optimization */
 @media (max-height: 500px) and (orientation: landscape) {
