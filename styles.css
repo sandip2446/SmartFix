@@ -612,6 +612,9 @@ section.visible {
 
 @media (max-width: 360px) {
     .hero-content h1 {
+          position: relative;
+        width: fit-content;
+        margin: 0 auto 0.4rem;
         font-size: 1.0rem;
         letter-spacing: -0.2px;
     }
