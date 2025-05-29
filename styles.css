@@ -100,30 +100,63 @@ body {
 }
 
 /* Typing Animation */
+.typing-container {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .typing-text {
     position: relative;
-    width: fit-content;
     margin: 0 auto;
-    border-right: 2px solid #fff;
     white-space: nowrap;
     overflow: hidden;
-    animation: typing 3.5s steps(40, end),
-               blink-caret 0.75s step-end infinite;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    border-right: 3px solid #fff;
+    animation: blink 0.8s infinite;
 }
 
 .typing-subtext {
-    opacity: 0;
-    animation: fadeIn 1s ease-out 3.5s forwards;
+    position: relative;
+    margin: 1rem auto 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    border-right: 3px solid #fff;
+    animation: blink 0.8s infinite;
 }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #fff; }
 }
 
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #fff }
+/* Responsive adjustments for typing text */
+@media (max-width: 768px) {
+    .typing-text {
+        font-size: 2.5rem;
+    }
+    
+    .typing-subtext {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .typing-text {
+        font-size: 2rem;
+    }
+    
+    .typing-subtext {
+        font-size: 1rem;
+    }
 }
 
 /* Navigation Bar */
@@ -269,6 +302,154 @@ body {
     background-color: #2980b9;
 }
 
+/* Hero Section Enhanced Styles */
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem 0;
+    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1s both;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    justify-content: center;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.cta-button i {
+    font-size: 1.3em;
+}
+
+.cta-button.primary {
+    background-color: #2563eb;
+    color: white;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+.cta-button.primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+.cta-button.secondary {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.cta-button.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    border-color: white;
+}
+
+.quick-services {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.2s both;
+    padding: 0 1rem;
+}
+
+.service-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.9rem 1.8rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    color: white;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+    font-size: 1.05rem;
+    min-width: 160px;
+    justify-content: center;
+}
+
+.service-tag i {
+    font-size: 1.3em;
+    color: #ffffff;
+    min-width: 24px;
+    text-align: center;
+}
+
+.service-tag span {
+    white-space: nowrap;
+}
+
+/* Responsive adjustments for service tags */
+@media (max-width: 768px) {
+    .quick-services {
+        gap: 10px;
+        margin-top: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .service-tag {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.95rem;
+        min-width: 140px;
+    }
+
+    .service-tag i {
+        font-size: 1.2em;
+        min-width: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-services {
+        gap: 8px;
+        margin-top: 1.2rem;
+    }
+
+    .service-tag {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+        min-width: 120px;
+        border-radius: 20px;
+    }
+
+    .service-tag i {
+        font-size: 1.1em;
+        min-width: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .quick-services {
+        gap: 6px;
+    }
+
+    .service-tag {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+        min-width: 110px;
+    }
+
+    .service-tag i {
+        font-size: 1em;
+        min-width: 16px;
+    }
+}
+
 /* Services Section */
 .services {
     padding: 5rem 2rem;
@@ -336,6 +517,7 @@ body {
     margin: 0 auto;
 }
 
+/* Phone Card Styles */
 .phone-card {
     background: white;
     border-radius: 10px;
@@ -343,30 +525,65 @@ body {
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     text-align: center;
     transition: all 0.3s ease;
+    position: relative;
+    height: 450px;
+    perspective: 1000px;
+}
+
+.phone-front, .phone-details {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.phone-front {
+    transform: rotateY(0deg);
+    padding: 0.3rem 1.5rem;
+}
+
+.phone-details {
+    transform: rotateY(180deg);
+    background: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.phone-card.flipped .phone-front {
+    transform: rotateY(180deg);
+}
+
+.phone-card.flipped .phone-details {
+    transform: rotateY(0deg);
 }
 
 .phone-card img {
     width: 100%;
-    height: 300px;
+    height: 250px;
     object-fit: contain;
     padding: 1rem;
     background-color: #f8f9fa;
     transition: transform 0.3s ease;
-}
-
-.phone-card:hover img {
-    transform: scale(1.05);
+    margin-bottom: 0.5rem;
 }
 
 .phone-card h3 {
-    margin: 1rem 0;
+    margin: 0.1rem 0;
     color: #2c3e50;
     font-size: 1.4rem;
 }
 
 .phone-card p {
     color: #666;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
 }
 
 .price {
@@ -374,47 +591,313 @@ body {
     font-size: 1.4rem;
     color: #3498db;
     font-weight: bold;
+    margin: 0.1rem 0;
+}
+
+.detail-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.detail-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.close-details {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.close-details:hover {
+    color: #333;
+    transform: rotate(90deg);
+}
+
+.specs-list {
+    list-style: none;
+    padding: 0;
     margin: 1rem 0;
+    text-align: left;
+    width: 100%;
+}
+
+.specs-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.specs-list li i {
+    color: #3498db;
+    margin-right: 0.8rem;
+    width: 20px;
+    text-align: center;
+}
+
+.condition, .warranty {
+    color: #666;
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+.phone-details .buy-button {
+    margin-top: auto;
+    width: 100%;
 }
 
 /* Accessories Section */
 .accessories {
     padding: 5rem 2rem;
     background-color: #f9f9f9;
+    overflow: hidden;
 }
 
-.accessories h2 {
+.section-title {
     text-align: center;
-    margin-bottom: 3rem;
+    margin: 4rem 0 1rem;
     color: #2c3e50;
+    font-size: 2.2rem;
+    position: relative;
+    padding-top: 2rem;
 }
 
-.accessories-grid {
+.section-title:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #3498db;
+    margin: 0.5rem auto;
+    border-radius: 2px;
+}
+
+.section-description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+}
+
+/* Styles for the grid layout within accessories, not for sliders */
+.accessories > .container > .accessories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    max-width: 1200px;
+    max-width: 1400px; /* Keep original max-width for grid */
     margin: 0 auto;
+    padding: 0 1rem; /* Keep original padding for grid */
 }
 
+/* Accessory Card Styles */
 .accessory-card {
     background: white;
-    padding: 2rem;
     border-radius: 10px;
-    text-align: center;
+    overflow: hidden;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    animation: scaleInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    animation-fill-mode: both;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    height: 450px;
+    perspective: 1000px;
 }
 
-.accessory-card:nth-child(1) { animation-delay: 0.2s; }
-.accessory-card:nth-child(2) { animation-delay: 0.4s; }
-.accessory-card:nth-child(3) { animation-delay: 0.6s; }
+.card-front, .card-details {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-.accessory-card i {
-    font-size: 2.5rem;
+.card-front {
+    transform: rotateY(0deg);
+    padding: 0.3rem 1.5rem;
+}
+
+.card-details {
+    transform: rotateY(180deg);
+    background: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accessory-card.flipped .card-front {
+    transform: rotateY(180deg);
+}
+
+.accessory-card.flipped .card-details {
+    transform: rotateY(0deg);
+}
+
+/* Accessory Image Container */
+.card-front img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Placeholder Image Styles */
+.card-front img[src*="placeholder.com"] {
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    padding: 2rem;
+}
+
+.case-info {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.case-info h3 {
+    margin: 0.1rem 0;
+    color: #2c3e50;
+    font-size: 1.4rem;
+}
+
+.case-description {
+    color: #666;
+    margin-bottom: 0.1rem;
+    font-size: 0.9rem;
+}
+
+.case-features {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.case-features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.case-features li i {
     color: #3498db;
-    margin-bottom: 1rem;
+    margin-right: 0.5rem;
+    width: 20px;
+}
+
+.detail-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.detail-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.close-details {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.close-details:hover {
+    color: #333;
+    transform: rotate(90deg);
+}
+
+.buy-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    font-weight: 500;
+}
+
+.buy-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for accessory cards */
+@media (max-width: 768px) {
+    .accessory-card {
+        height: 400px;
+    }
+    
+    .card-front img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .accessory-card {
+        height: 380px;
+    }
+    
+    .card-front img {
+        height: 180px;
+    }
 }
 
 /* Contact Section */
@@ -463,14 +946,13 @@ footer {
 
 /* Smooth Section Transitions */
 section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-section.visible {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin: 0 auto;
+    width: 100%;
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Responsive Design */
@@ -553,8 +1035,16 @@ section.visible {
         padding: 1.5rem;
     }
 
+    .phone-card {
+        height: 400px;
+    }
+
     .phone-card img {
         height: 200px;
+    }
+
+    .specs-list li {
+        font-size: 0.85rem;
     }
 
     .contact-info {
@@ -564,6 +1054,26 @@ section.visible {
 
     .info-item {
         padding: 1.5rem;
+    }
+
+    .whatsapp-button {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .email-button {
+        bottom: 20px;
+        right: 90px;
+    }
+
+    .phone-button {
+        bottom: 90px;
+        right: 20px;
+    }
+
+    .sms-button {
+        bottom: 90px;
+        right: 90px;
     }
 }
 
@@ -596,17 +1106,45 @@ section.visible {
         font-size: 2rem;
     }
 
-    .phone-card h3 {
-        font-size: 1.2rem;
+    .phone-card {
+        height: 380px;
     }
 
-    .price {
-        font-size: 1.2rem;
+    .phone-card img {
+        height: 180px;
+    }
+
+    .detail-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
     }
 
     footer {
         padding: 1.5rem 1rem;
         font-size: 0.9rem;
+    }
+
+    .whatsapp-button, .email-button, .phone-button, .sms-button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .whatsapp-button i, .email-button i, .phone-button i, .sms-button i {
+        font-size: 28px;
+    }
+    
+    .email-button {
+        right: 80px;
+    }
+
+    .phone-button {
+        bottom: 80px;
+        right: 20px;
+    }
+
+    .sms-button {
+        bottom: 80px;
+        right: 80px;
     }
 }
 
@@ -711,5 +1249,476 @@ section.visible {
 
     .contact-info {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large Screen Optimization */
+@media (min-width: 1025px) {
+    .accessories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Contact Buttons Common Styles */
+.whatsapp-button, .email-button, .phone-button, .sms-button {
+    position: fixed;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    opacity: 0.95;
+}
+
+.whatsapp-button i, .email-button i, .phone-button i, .sms-button i {
+    font-size: 28px;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover, .email-button:hover, .phone-button:hover, .sms-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+.whatsapp-button:hover i, .email-button:hover i, .phone-button:hover i, .sms-button:hover i {
+    transform: scale(1.1);
+}
+
+/* Individual Button Positions and Colors */
+.whatsapp-button {
+    bottom: 25px;
+    background-color: #25d366;
+    color: white;
+}
+
+.email-button {
+    bottom: 95px;
+    background-color: #EA4335;
+    color: white;
+}
+
+.phone-button {
+    bottom: 165px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.sms-button {
+    bottom: 235px;
+    background-color: #2196F3;
+    color: white;
+}
+
+/* Hover Colors */
+.whatsapp-button:hover {
+    background-color: #128C7E;
+}
+
+.email-button:hover {
+    background-color: #D33426;
+}
+
+.phone-button:hover {
+    background-color: #388E3C;
+}
+
+.sms-button:hover {
+    background-color: #1976D2;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    .whatsapp-button, .email-button, .phone-button, .sms-button {
+        width: 48px;
+        height: 48px;
+        right: 20px;
+    }
+    
+    .whatsapp-button i, .email-button i, .phone-button i, .sms-button i {
+        font-size: 24px;
+    }
+
+    .whatsapp-button {
+        bottom: 20px;
+    }
+
+    .email-button {
+        bottom: 83px;
+    }
+
+    .phone-button {
+        bottom: 146px;
+    }
+
+    .sms-button {
+        bottom: 209px;
+    }
+}
+
+/* Slider Container Styles */
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.product-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    gap: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+.product-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slide-item {
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 20px;
+    display: block;
+}
+
+/* Slider Navigation Arrows */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.slider-arrow.left {
+    left: 10px;
+}
+
+.slider-arrow.right {
+    right: 10px;
+}
+
+.slider-arrow:hover {
+    background: #f8f9fa;
+}
+
+.slider-arrow i {
+    color: #333;
+    font-size: 1.2em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slide-item {
+        width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-item {
+        width: 260px;
+    }
+}
+
+/* Layout Container for Symmetry */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Section Padding and Centering */
+section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Grid Containers */
+.phones-grid,
+.accessories-grid,
+.services-grid,
+.contact-info {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Remove extra padding from grid containers */
+.phones-grid,
+.accessories-grid,
+.services-grid,
+.contact-info,
+.slider-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Adjust section-title and section-description for symmetry */
+.section-title,
+.section-description {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+
+/* Phone Slider Styles */
+.phones-slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.phones-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    gap: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+.phones-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.phone-slide {
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 20px;
+    display: block;
+}
+
+.phone-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 450px;
+    position: relative;
+    perspective: 1000px;
+    display: block;
+}
+
+.phone-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    background: white;
+}
+
+.phone-front img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f8f9fa;
+}
+
+.phone-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 20px;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    overflow-y: auto;
+}
+
+.phone-card.flipped .phone-front {
+    transform: rotateY(180deg);
+}
+
+.phone-card.flipped .phone-details {
+    transform: rotateY(0);
+}
+
+/* Slider Navigation Arrows */
+.phones-slider-container .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.phones-slider-container .slider-arrow.left {
+    left: 10px;
+}
+
+.phones-slider-container .slider-arrow.right {
+    right: 10px;
+}
+
+.phones-slider-container .slider-arrow:hover {
+    background: #f8f9fa;
+}
+
+.phones-slider-container .slider-arrow i {
+    color: #333;
+    font-size: 1.2em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .phone-slide {
+        width: 280px;
+    }
+    
+    .phone-card {
+        height: 400px;
+    }
+    
+    .phone-front img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .phone-slide {
+        width: 260px;
+    }
+    
+    .phone-card {
+        height: 380px;
+    }
+    
+    .phone-front img {
+        height: 180px;
+    }
+}
+
+/* Premium Cable Card Styles - Using same structure as phone cards */
+.cable-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 450px;
+    position: relative;
+    perspective: 1000px;
+    display: block;
+}
+
+.cable-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    background: white;
+}
+
+.cable-front img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f8f9fa;
+}
+
+.cable-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 20px;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    overflow-y: auto;
+}
+
+.cable-card.flipped .cable-front {
+    transform: rotateY(180deg);
+}
+
+.cable-card.flipped .cable-details {
+    transform: rotateY(0);
+}
+
+/* Responsive adjustments for cable cards */
+@media (max-width: 768px) {
+    .cable-card {
+        height: 400px;
+    }
+    
+    .cable-front img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cable-card {
+        height: 380px;
+    }
+    
+    .cable-front img {
+        height: 180px;
     }
 } 

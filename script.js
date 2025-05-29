@@ -2,33 +2,83 @@ document.addEventListener('DOMContentLoaded', function() {
     // Typing effect for hero section
     const typingText = document.querySelector('.typing-text');
     const typingSubtext = document.querySelector('.typing-subtext');
-    const mainText = "Professional Phone Repair Services";
-    const subText = "Expert repairs for iPhone and Samsung devices";
+    
+    const headings = [
+        {
+            main: "Professional Phone Repair Services",
+            sub: "Expert repairs for iPhone and Samsung devices"
+        },
+        {
+            main: "Quality Used Phones Available",
+            sub: "Certified pre-owned devices with warranty"
+        },
+        {
+            main: "Premium Accessories & Cases",
+            sub: "Protect your device with style"
+        },
+        {
+            main: "Fast & Reliable Service",
+            sub: "Same day repairs for most issues"
+        },
+        {
+            main: "Repair at Your Doorstep!",
+            sub: "Fix your phone in the comfort of your home"
+        }
+    ];
+
+    let currentIndex = 0;
+    let isDeleting = false;
+    let mainText = '';
+    let subText = '';
     let mainIndex = 0;
     let subIndex = 0;
-    let isMainComplete = false;
+    let typingSpeed = 100;
+    let deletingSpeed = 50;
+    let pauseTime = 2000;
 
-    function typeMainText() {
-        if (mainIndex < mainText.length) {
-            typingText.textContent = mainText.substring(0, mainIndex + 1);
-            mainIndex++;
-            setTimeout(typeMainText, 100);
+    function typeText() {
+        const currentHeading = headings[currentIndex];
+        
+        if (!isDeleting) {
+            // Typing
+            if (mainIndex < currentHeading.main.length) {
+                mainText = currentHeading.main.substring(0, mainIndex + 1);
+                typingText.textContent = mainText;
+                mainIndex++;
+                setTimeout(typeText, typingSpeed);
+            } else if (subIndex < currentHeading.sub.length) {
+                subText = currentHeading.sub.substring(0, subIndex + 1);
+                typingSubtext.textContent = subText;
+                subIndex++;
+                setTimeout(typeText, typingSpeed);
+            } else {
+                // Finished typing both texts
+                isDeleting = true;
+                setTimeout(typeText, pauseTime);
+            }
         } else {
-            isMainComplete = true;
-            setTimeout(typeSubText, 500);
+            // Deleting
+            if (subText.length > 0) {
+                subText = currentHeading.sub.substring(0, subText.length - 1);
+                typingSubtext.textContent = subText;
+                setTimeout(typeText, deletingSpeed);
+            } else if (mainText.length > 0) {
+                mainText = currentHeading.main.substring(0, mainText.length - 1);
+                typingText.textContent = mainText;
+                setTimeout(typeText, deletingSpeed);
+            } else {
+                // Finished deleting both texts
+                isDeleting = false;
+                mainIndex = 0;
+                subIndex = 0;
+                currentIndex = (currentIndex + 1) % headings.length;
+                setTimeout(typeText, 500);
+            }
         }
     }
 
-    function typeSubText() {
-        if (subIndex < subText.length) {
-            typingSubtext.textContent = subText.substring(0, subIndex + 1);
-            subIndex++;
-            setTimeout(typeSubText, 50);
-        }
-    }
-
-    // Start typing animation
-    setTimeout(typeMainText, 1000);
+    // Start the typing animation
+    setTimeout(typeText, 1000);
 
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.querySelector('.nav-links');
@@ -131,4 +181,95 @@ document.addEventListener('DOMContentLoaded', function() {
             hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
         }
     });
+
+    // Sliders functionality
+    function setupSlider(sliderId, leftButtonId, rightButtonId) {
+        const slider = document.getElementById(sliderId);
+        const leftButton = document.getElementById(leftButtonId);
+        const rightButton = document.getElementById(rightButtonId);
+
+        if (slider && leftButton && rightButton) {
+            let scrollAmount = 0;
+            const slideWidth = slider.querySelector('.slide-item').offsetWidth;
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+            // Function to update arrow visibility
+            function updateArrowVisibility() {
+                leftButton.style.display = scrollAmount <= 0 ? 'none' : 'flex';
+                rightButton.style.display = scrollAmount >= maxScroll ? 'none' : 'flex';
+            }
+
+            // Initial arrow visibility
+            updateArrowVisibility();
+
+            leftButton.addEventListener('click', () => {
+                scrollAmount = Math.max(scrollAmount - slideWidth, 0);
+                slider.scrollTo({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+                updateArrowVisibility();
+            });
+
+            rightButton.addEventListener('click', () => {
+                scrollAmount = Math.min(scrollAmount + slideWidth, maxScroll);
+                slider.scrollTo({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+                updateArrowVisibility();
+            });
+
+            // Update scroll amount and arrow visibility on manual scroll
+            slider.addEventListener('scroll', () => {
+                scrollAmount = slider.scrollLeft;
+                updateArrowVisibility();
+            });
+
+            // Update on window resize
+            window.addEventListener('resize', () => {
+                const newSlideWidth = slider.querySelector('.slide-item').offsetWidth;
+                const newMaxScroll = slider.scrollWidth - slider.clientWidth;
+                scrollAmount = Math.min(scrollAmount, newMaxScroll);
+                updateArrowVisibility();
+            });
+        }
+    }
+
+    // Setup all sliders
+    setupSlider('phonesSlider', 'phonesSliderLeft', 'phonesSliderRight');
+    setupSlider('casesSlider', 'casesSliderLeft', 'casesSliderRight');
+    setupSlider('screenSlider', 'screenSliderLeft', 'screenSliderRight');
+    setupSlider('chargersSlider', 'chargersSliderLeft', 'chargersSliderRight');
+    setupSlider('cablesSlider', 'cablesSliderLeft', 'cablesSliderRight');
+
+    // Card Flip Animation - Unified handler for all card types
+    function setupCardFlip() {
+        // Handle all types of cards (phones, accessories, and cables)
+        const allCards = document.querySelectorAll('.phone-card, .accessory-card, .cable-card');
+        
+        allCards.forEach(card => {
+            const detailButton = card.querySelector('.detail-button');
+            const closeButton = card.querySelector('.close-details');
+            
+            if (detailButton) {
+                detailButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    card.classList.add('flipped');
+                });
+            }
+            
+            if (closeButton) {
+                closeButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    card.classList.remove('flipped');
+                });
+            }
+        });
+    }
+
+    // Initialize card flip functionality
+    setupCardFlip();
 }); 
